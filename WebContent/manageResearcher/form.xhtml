@@ -1,0 +1,77 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	template="/resources/templates/default/decorator.xhtml">
+
+	<ui:define name="title">
+			<h:outputText value="CRUD" />
+		</ui:define>
+
+		<ui:define name="body">
+			<h1>Researcher</h1>
+	<h:head></h:head>
+
+Importando arquivo XML
+<br />
+
+	
+			<div class="crud">
+				<ui:decorate template="/resources/templates/default/form.xhtml">
+					<h:form id="form">
+					Caro usuario,<br></br>
+				Para cadastrar um pesquisador é preciso que voce faça o download do curriculo lattes dele no formato xml. Para isso basta seguir os passos: <br></br>
+						<br></br>
+				Passo 1 ) Clicar no link lattes do pesquisador; <br></br>
+				Passo 2 ) Entra com o codigo de segurança; <br></br>
+				Passo 3 ) Clicar no botao de xml no canto direito da pagina; <br></br>
+				Passo 4 ) Entre com o codigo de segurança; <br></br>
+				Passo 5 ) Clicar em ok para iniciar o donwload. <br></br>
+						<br></br>
+				Para acessar os links de curriculos lattes dos pesquisadores, clique <a
+							href="http://www.informatica.ufes.br/pos-graduacao/PPGI/produ%C3%A7%C3%A3o-intelectual">aqui</a>.
+								
+				</h:form>
+				</ui:decorate>
+			</div>
+			<h:form enctype="multipart/form-data">
+     
+    1- <p:fileUpload value="#{registerResearcherController.arquivoXML}" mode="simple" skinSimple="true" label="Selecionar"/>
+     
+     <br/><br/><br/>
+    
+    2- <p:commandButton value="Importar…" ajax="false" actionListener="#{registerResearcherController.CarregarArquivoXML()}"/>
+        
+    <br/><br/>
+    
+    <p:dataTable var="researcher" value="#{registerResearcherController.researcher}" emptyMessage="Nenhum Registro">
+    
+        <p:column headerText="Name">
+            <h:outputText value="#{registerResearcherController.researcher.researcherName}" />
+        </p:column>
+    
+        
+    </p:dataTable>
+    
+     <p:dataTable var="researcher" value="#{registerResearcherController.researcher}" emptyMessage="Nenhum Registro">
+    
+        <p:column headerText="Publication">
+            <h:outputText value="#{registerResearcherController.researcher.researcherName}" />
+        </p:column>
+    
+        
+    </p:dataTable>
+   
+    
+</h:form>
+					</ui:define>
+
+				
+	
+
+			</ui:composition>
+			
+			
+        

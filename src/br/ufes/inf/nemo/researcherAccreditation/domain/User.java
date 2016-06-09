@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 
 @Entity
-public class User extends PersistentObjectSupport {
+public class User extends PersistentObjectSupport implements Comparable<User> {
 	private String name;
 	private String email;
 	private String phone;
@@ -50,6 +50,12 @@ public class User extends PersistentObjectSupport {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public int compareTo(User o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}	
 
 }

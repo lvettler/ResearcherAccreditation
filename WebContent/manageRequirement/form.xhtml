@@ -11,7 +11,7 @@
 	</ui:define>
 
 	<ui:define name="body">
-		<h1>User</h1>
+		<h1>Requirement</h1>
 
 		<div class="crud">
 			<ui:decorate template="/resources/templates/default/form.xhtml">
@@ -25,7 +25,7 @@
 								<h:outputText value="Name" />
 							</ui:define>
 							<p:inputText id="name"
-								value="#{registerUserController.selectedEntity.name}" size="50"
+								value="#{registerRequirementController.selectedEntity.name}" size="50"
 								required="true">
 								<f:facet name="prepend">
 									<b:iconAwesome name="barcode" />
@@ -34,32 +34,15 @@
 						</ui:decorate>
 					</h:panelGroup>
 
-					<h:panelGroup id="passwordField">
+					<h:panelGroup id="beginDateField">
 						<ui:decorate
 							template="/resources/templates/default/formfield.xhtml">
-							<ui:param name="tooltip" value="password" />
+							<ui:param name="tooltip" value="Begin Date" />
 							<ui:define name="label">
-								<h:outputText value="Password" />
+								<h:outputText value="Begin Date" />
 							</ui:define>
-							<p:inputText id="password"
-								value="#{registerUserController.selectedEntity.password}"
-								size="50" required="true">
-								<f:facet name="prepend">
-									<b:iconAwesome name="barcode" />
-								</f:facet>
-							</p:inputText>
-						</ui:decorate>
-					</h:panelGroup>
-
-					<h:panelGroup id="emailField">
-						<ui:decorate
-							template="/resources/templates/default/formfield.xhtml">
-							<ui:param name="tooltip" value="email" />
-							<ui:define name="label">
-								<h:outputText value="E-mail" />
-							</ui:define>
-							<p:inputText id="email"
-								value="#{registerUserController.selectedEntity.email}" size="50"
+							<p:inputText id="beginDate"
+								value="#{registerRequirementController.selectedEntity.beginDate}" precision="date"
 								required="true">
 								<f:facet name="prepend">
 									<b:iconAwesome name="barcode" />
@@ -67,16 +50,50 @@
 							</p:inputText>
 						</ui:decorate>
 					</h:panelGroup>
-
-					<h:panelGroup id="phoneField">
+					
+					<h:panelGroup id="endDateField">
 						<ui:decorate
 							template="/resources/templates/default/formfield.xhtml">
-							<ui:param name="tooltip" value="phone" />
+							<ui:param name="tooltip" value="End Date" />
 							<ui:define name="label">
-								<h:outputText value="Phone" />
+								<h:outputText value="End Date" />
 							</ui:define>
-							<p:inputText id="phone"
-								value="#{registerUserController.selectedEntity.phone}" size="50"
+							<p:inputText id="endDate"
+								value="#{registerRequirementController.selectedEntity.endDate}" precision="date"
+								required="true">
+								<f:facet name="prepend">
+									<b:iconAwesome name="barcode" />
+								</f:facet>
+							</p:inputText>
+						</ui:decorate>
+					</h:panelGroup>
+										
+					<h:panelGroup id="totalScoreField">
+						<ui:decorate
+							template="/resources/templates/default/formfield.xhtml">
+							<ui:param name="tooltip" value="Total Score" />
+							<ui:define name="label">
+								<h:outputText value="Total Score" />
+							</ui:define>
+							<p:inputText id="totalScore"
+								value="#{registerRequirementController.selectedEntity.totalScore}" size="8"
+								required="true">
+								<f:facet name="prepend">
+									<b:iconAwesome name="barcode" />
+								</f:facet>
+							</p:inputText>
+						</ui:decorate>
+					</h:panelGroup>
+										
+					<h:panelGroup id="journalScoreField">
+						<ui:decorate
+							template="/resources/templates/default/formfield.xhtml">
+							<ui:param name="tooltip" value="Journal Score" />
+							<ui:define name="label">
+								<h:outputText value="Journal Score" />
+							</ui:define>
+							<p:inputText id="journalScore"
+								value="#{registerRequirementController.selectedEntity.journalScore}" size="8"
 								required="true">
 								<f:facet name="prepend">
 									<b:iconAwesome name="barcode" />
@@ -87,25 +104,25 @@
 
 					<ui:decorate
 						template="/resources/templates/default/formbutton.xhtml">
-						<h:panelGroup rendered="#{! registerUserController.readOnly}">
-							<p:commandButton action="#{registerUserController.list}"
+						<h:panelGroup rendered="#{! registerRequirementController.readOnly}">
+							<p:commandButton action="#{registerRequirementController.list}"
 								value="#{msgs['crud.button.cancel']}" immediate="true"
 								icon="ui-icon-cancel1" styleClass="btn-form btn" />
-							<p:commandButton action="#{registerUserController.save}"
+							<p:commandButton action="#{registerRequirementController.save}"
 								value="#{msgs['crud.button.save']}" icon="ui-icon-save1"
 								update=":form :globalMessages" styleClass="btn-form btn" />
 							<p:hotkey bind="#{msgs['crud.hotkey.backToList']}"
-								action="#{registerUserController.list}" immediate="true" />
+								action="#{registerRequirementController.list}" immediate="true" />
 							<p:hotkey bind="#{msgs['crud.hotkey.save']}"
-								action="#{registerUserController.save}"
+								action="#{registerRequirementController.save}"
 								update=":form :globalMessages" />
 						</h:panelGroup>
-						<h:panelGroup rendered="#{registerUserController.readOnly}">
-							<p:commandButton action="#{registerUserController.list}"
+						<h:panelGroup rendered="#{registerRequirementController.readOnly}">
+							<p:commandButton action="#{registerRequirementController.list}"
 								value="#{msgs['crud.button.back']}" immediate="true"
 								icon="ui-icon-save1" styleClass="btn-form btn" />
 							<p:hotkey bind="#{msgs['crud.hotkey.backToList']}"
-								action="#{registerUserController.list}" immediate="true" />
+								action="#{registerRequirementController.list}" immediate="true" />
 						</h:panelGroup>
 					</ui:decorate>
 				</h:form>

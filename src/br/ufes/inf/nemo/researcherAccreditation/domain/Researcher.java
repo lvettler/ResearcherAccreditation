@@ -8,7 +8,8 @@ import br.ufes.inf.nemo.util.ejb3.persistence.PersistentObjectSupport;
 
 @Entity
 public class Researcher extends PersistentObjectSupport {
-	private String linkCurriculumLattes;
+	
+	private String researcherName;
 	@Enumerated(EnumType.STRING)
     private Classification classification;
 	
@@ -17,26 +18,26 @@ public class Researcher extends PersistentObjectSupport {
 	
 	}
 	
-	public Researcher(String linkCurriculumLattes, Classification classification){
-		this.linkCurriculumLattes = linkCurriculumLattes;
+	public Researcher(Classification classification, String name){
 		this.classification = classification; 
+		this.setResearcherName(name);
 	}
 	
-	/* Funções get/set */
-	public String getLinkCurriculumLattes() {
-		return linkCurriculumLattes;
-	}
-
-	public void setLinkCurriculumLattes(String linkCurriculumLattes) {
-		this.linkCurriculumLattes = linkCurriculumLattes;
-	}
-
+	
 	public Classification getClassification() {
 		return classification;
 	}
 
 	public void setClassification(Classification classification) {
 		this.classification = classification;
+	}
+
+	public String getResearcherName() {
+		return researcherName;
+	}
+
+	public void setResearcherName(String researcherName) {
+		this.researcherName = researcherName;
 	}
 	
 	

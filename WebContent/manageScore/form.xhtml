@@ -11,22 +11,22 @@
 	</ui:define>
 
 	<ui:define name="body">
-		<h1>User</h1>
+		<h1>Score</h1>
 
 		<div class="crud">
 			<ui:decorate template="/resources/templates/default/form.xhtml">
 				<h:form id="form">
-				
-					<h:panelGroup id="nameField">
+
+					<h:panelGroup id="nationalScoreField">
 						<ui:decorate
 							template="/resources/templates/default/formfield.xhtml">
-							<ui:param name="tooltip" value="Name" />
+							<ui:param name="tooltip" value="National Score" />
 							<ui:define name="label">
-								<h:outputText value="Name" />
+								<h:outputText value="National Score" />
 							</ui:define>
-							<p:inputText id="name"
-								value="#{registerUserController.selectedEntity.name}" size="50"
-								required="true">
+							<p:inputText id="nationalScore"
+								value="#{registerScoreController.selectedEntity.nationalScore}"
+								size="8" required="true">
 								<f:facet name="prepend">
 									<b:iconAwesome name="barcode" />
 								</f:facet>
@@ -34,16 +34,16 @@
 						</ui:decorate>
 					</h:panelGroup>
 
-					<h:panelGroup id="passwordField">
+					<h:panelGroup id="internationalScoreField">
 						<ui:decorate
 							template="/resources/templates/default/formfield.xhtml">
-							<ui:param name="tooltip" value="password" />
+							<ui:param name="tooltip" value="International Score" />
 							<ui:define name="label">
-								<h:outputText value="Password" />
+								<h:outputText value="International Score" />
 							</ui:define>
-							<p:inputText id="password"
-								value="#{registerUserController.selectedEntity.password}"
-								size="50" required="true">
+							<p:inputText id="internationalScore"
+								value="#{registerScoreController.selectedEntity.internationalScore}"
+								size="8" required="true">
 								<f:facet name="prepend">
 									<b:iconAwesome name="barcode" />
 								</f:facet>
@@ -51,61 +51,46 @@
 						</ui:decorate>
 					</h:panelGroup>
 
-					<h:panelGroup id="emailField">
+					<h:panelGroup id="scoringSystemField">
 						<ui:decorate
 							template="/resources/templates/default/formfield.xhtml">
-							<ui:param name="tooltip" value="email" />
+							<ui:param name="fieldName" value="form:scoringSystem" />
+							<ui:param name="tooltip" value="Scoring System" />
 							<ui:define name="label">
-								<h:outputText value="E-mail" />
+								<h:outputText value="Scoring System" />
 							</ui:define>
-							<p:inputText id="email"
-								value="#{registerUserController.selectedEntity.email}" size="50"
-								required="true">
-								<f:facet name="prepend">
-									<b:iconAwesome name="barcode" />
-								</f:facet>
-							</p:inputText>
-						</ui:decorate>
-					</h:panelGroup>
-
-					<h:panelGroup id="phoneField">
-						<ui:decorate
-							template="/resources/templates/default/formfield.xhtml">
-							<ui:param name="tooltip" value="phone" />
-							<ui:define name="label">
-								<h:outputText value="Phone" />
-							</ui:define>
-							<p:inputText id="phone"
-								value="#{registerUserController.selectedEntity.phone}" size="50"
-								required="true">
-								<f:facet name="prepend">
-									<b:iconAwesome name="barcode" />
-								</f:facet>
-							</p:inputText>
+							<p:selectOneMenu id="scoringSystem"
+								value="#{registerScoreController.selectedEntity.scoringSystem}"
+								 styleClass="selectOne"
+								converter="#{dataController.scoringConverter}"
+								>
+								<f:selectItems value="#{dataController.scoringSystem}" />
+								<p:ajax event="blur" update="scoringSystemField" />
+							</p:selectOneMenu>
 						</ui:decorate>
 					</h:panelGroup>
 
 					<ui:decorate
 						template="/resources/templates/default/formbutton.xhtml">
-						<h:panelGroup rendered="#{! registerUserController.readOnly}">
-							<p:commandButton action="#{registerUserController.list}"
+						<h:panelGroup rendered="#{! registerScoreController.readOnly}">
+							<p:commandButton action="#{registerScoreController.list}"
 								value="#{msgs['crud.button.cancel']}" immediate="true"
 								icon="ui-icon-cancel1" styleClass="btn-form btn" />
-							<p:commandButton action="#{registerUserController.save}"
+							<p:commandButton action="#{registerScoreController.save}"
 								value="#{msgs['crud.button.save']}" icon="ui-icon-save1"
 								update=":form :globalMessages" styleClass="btn-form btn" />
 							<p:hotkey bind="#{msgs['crud.hotkey.backToList']}"
-								action="#{registerUserController.list}" immediate="true" />
+								action="#{registerScoreController.list}" immediate="true" />
 							<p:hotkey bind="#{msgs['crud.hotkey.save']}"
-								action="#{registerUserController.save}"
+								action="#{registerScoreController.save}"
 								update=":form :globalMessages" />
 						</h:panelGroup>
-						<h:panelGroup rendered="#{registerUserController.readOnly}">
-							<p:commandButton action="#{registerUserController.list}"
+						<h:panelGroup rendered="#{registerScoreController.readOnly}">
+							<p:commandButton action="#{registerScoreController.list}"
 								value="#{msgs['crud.button.back']}" immediate="true"
 								icon="ui-icon-save1" styleClass="btn-form btn" />
 							<p:hotkey bind="#{msgs['crud.hotkey.backToList']}"
-								action="#{registerUserController.list}" immediate="true" />
+								action="#{registerScoreController.list}" immediate="true" />
 						</h:panelGroup>
 					</ui:decorate>
 				</h:form>

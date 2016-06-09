@@ -20,9 +20,11 @@ public class RegisterUserServiceBean extends CrudServiceBean<User> implements Re
 		return userDAO;
 	}
 
-	@Override
+	@Override 
 	protected User createNewEntity() {
 		return new User();
 	}
-
+	
+	
+	
 }
